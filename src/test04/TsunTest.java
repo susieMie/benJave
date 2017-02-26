@@ -15,9 +15,10 @@ public class TsunTest {
 		a04();
 		a05();
 
-		//fail("まだ実装されていません");
+		// fail("まだ実装されていません");
 	}
 
+	// ArrayList実験
 	private void a01() {
 		java.lang.System.out.println("\na01 ArrayList");
 
@@ -35,11 +36,11 @@ public class TsunTest {
 
 	}
 
+	// HashMap実験
 	private final String KEDAMONO = "kedamono";
 	private final String NEZUMI = "nezumi";
 
 	private void a02() {
-		//	ハッシュマップ実験
 		java.lang.System.out.println("\na02 HashMap");
 
 		final java.util.HashMap<String, Tsun> tsunMap = new java.util.HashMap<String, Tsun>();
@@ -59,6 +60,7 @@ public class TsunTest {
 
 	}
 
+	// final実験
 	private void a03() {
 		java.lang.System.out.println("\na03 final");
 
@@ -66,13 +68,14 @@ public class TsunTest {
 
 		tsum = new Beasu();
 
-		//	↓コンパイルエラー
-		//tsum = new Mickey();
+		// ↓コンパイルエラー
+		// tsum = new Mickey();
 
 		tsum.printInfo();
 
 	}
 
+	// equals実験
 	private void a04() {
 		java.lang.System.out.println("\na04 equals");
 
@@ -89,11 +92,13 @@ public class TsunTest {
 		}
 	}
 
+	// HashSet実験
 	private void a05() {
-		java.lang.System.out.println("\na05 HashMap");
+		java.lang.System.out.println("\na05 HashSet");
 
 		final java.util.HashSet<Tsun> tsunSet = new java.util.HashSet<Tsun>();
 		tsunSet.add(new Beasu());
+
 		final Tsun beasu = new Beasu();
 		tsunSet.add(beasu);
 		tsunSet.add(beasu); // これが追加されてないっぽい
@@ -104,6 +109,5 @@ public class TsunTest {
 		}
 
 	}
-
 
 }
