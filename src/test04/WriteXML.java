@@ -22,13 +22,7 @@ public class WriteXML {
 		document.appendChild(tsunsElement);
 
 		for (final Tsun tsun : tsunList) {
-
-			final Element tsunElement = document.createElement(tsun.getClass().getSimpleName());
-			tsunElement.setAttribute("skilmLevel", Integer.toString(tsun.getSkilmLevel()));
-			tsunElement.appendChild(document.createTextNode("a123456789z"));
-
-			tsunsElement.appendChild(tsunElement);
-
+			tsunsElement.appendChild(tsun.createElement(document));
 		}
 
 		final Transformer transformer = TransformerFactory.newInstance().newTransformer();

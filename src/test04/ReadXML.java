@@ -27,12 +27,12 @@ public class ReadXML {
 
 					if (tsunNode.getNodeName().equals("Beasu")) {
 						final Tsun beasu = new Beasu();
-						readAttr(beasu, tsunNode);
+						beasu.loadNode(tsunNode);
 						tsunList.add(beasu);
 
 					} else if (tsunNode.getNodeName().equals("Mickez")) {
 						final Tsun mickez = new Mickez();
-						readAttr(mickez, tsunNode);
+						mickez.loadNode(tsunNode);
 						tsunList.add(mickez);
 
 					}
@@ -42,16 +42,6 @@ public class ReadXML {
 			}
 		}
 		return tsunList;
-	}
-
-	private void readAttr(final Tsun tsun, final Node node) {
-		final org.w3c.dom.NamedNodeMap namedNodeMap = node.getAttributes();
-		if (node != null) {
-			final Node item = namedNodeMap.getNamedItem("skilmLevel");
-			if (item != null) {
-				tsun.setSkilmeLevel(Integer.parseInt(item.getNodeValue()));
-			}
-		}
 	}
 
 }

@@ -1,5 +1,9 @@
 package test04;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
 public abstract class Tsun {
 
 	protected Tsun() {
@@ -9,6 +13,7 @@ public abstract class Tsun {
 	protected abstract Integer tsunId();
 
 	private int skilmLevel;
+	private int level;
 
 	// PTOTECTED:同一package内と、そのクラスを継承したサブクラス内からアクセスできる
 	protected String GetStr2() {
@@ -21,12 +26,22 @@ public abstract class Tsun {
 		return "Overrideして下さい。";
 	}
 
+	// skilmLevel
 	public final int getSkilmLevel() {
-		return skilmLevel;
+		return this.skilmLevel;
 	}
 
 	public final void setSkilmeLevel(int skilmLevel) {
 		this.skilmLevel = skilmLevel;
+	}
+
+	// level
+	public final int getLevel() {
+		return this.level;
+	}
+
+	public final void setLevel(int level) {
+		this.level = level;
 	}
 
 	public void printInfo() {
@@ -48,4 +63,33 @@ public abstract class Tsun {
 			return false;
 		}
 	}
+
+	public final org.w3c.dom.Element createElement(final Document document) {
+		final Element element = document.createElement(this.getClass().getSimpleName());
+
+		element.setAttribute("skilmLevel", Integer.toString(this.getSkilmLevel()));
+		element.setAttribute("level", Integer.toString(this.getSkilmLevel()));
+		element.appendChild(document.createTextNode("a123456789z"));
+
+		return element;
+	}
+
+	/**
+	 * メソッドの説明。
+	 *
+	 * @param node ここから読み込む
+	 * @since 1.5
+	 * @see "関連"
+	 * @see <a href="http://www.example.com/">Example</a>
+	 */
+	public void loadNode(final Node node) {
+		final org.w3c.dom.NamedNodeMap namedNodeMap = node.getAttributes();
+		if (node != null) {
+			final Node item = namedNodeMap.getNamedItem("skilmLevel");
+			if (item != null) {
+				this.setSkilmeLevel(Integer.parseInt(item.getNodeValue()));
+			}
+		}
+	}
+
 }
