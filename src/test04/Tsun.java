@@ -2,7 +2,13 @@ package test04;
 
 public abstract class Tsun {
 
+	protected Tsun() {
+		this.skilmLevel = 0;
+	}
+
 	protected abstract Integer tsunId();
+
+	private int skilmLevel;
 
 	// PTOTECTED:同一package内と、そのクラスを継承したサブクラス内からアクセスできる
 	protected String GetStr2() {
@@ -11,15 +17,21 @@ public abstract class Tsun {
 
 	public abstract String getName();
 
-	public String getSkill() {
+	public String getSkilm() {
 		return "Overrideして下さい。";
 	}
 
-	public abstract int getLevel();
+	public final int getSkilmLevel() {
+		return skilmLevel;
+	}
+
+	public final void setSkilmeLevel(int skilmLevel) {
+		this.skilmLevel = skilmLevel;
+	}
 
 	public void printInfo() {
 		java.lang.System.out.println(this.getName());
-		java.lang.System.out.println(this.getSkill());
+		java.lang.System.out.println(this.getSkilm());
 	}
 
 	@Override
