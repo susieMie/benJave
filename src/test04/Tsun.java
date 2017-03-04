@@ -1,9 +1,5 @@
 package test04;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-
 public abstract class Tsun {
 
 	protected Tsun() {
@@ -64,8 +60,8 @@ public abstract class Tsun {
 		}
 	}
 
-	public final org.w3c.dom.Element createElement(final Document document) {
-		final Element element = document.createElement(this.getClass().getSimpleName());
+	public final org.w3c.dom.Element createElement(final org.w3c.dom.Document document) {
+		final org.w3c.dom.Element element = document.createElement(this.getClass().getSimpleName());
 
 		element.setAttribute("skilmLevel", Integer.toString(this.getSkilmLevel()));
 		element.setAttribute("level", Integer.toString(this.getSkilmLevel()));
@@ -82,10 +78,10 @@ public abstract class Tsun {
 	 * @see "関連"
 	 * @see <a href="http://www.example.com/">Example</a>
 	 */
-	public void loadNode(final Node node) {
+	public void loadNode(final org.w3c.dom.Node node) {
 		final org.w3c.dom.NamedNodeMap namedNodeMap = node.getAttributes();
 		if (node != null) {
-			final Node item = namedNodeMap.getNamedItem("skilmLevel");
+			final org.w3c.dom.Node item = namedNodeMap.getNamedItem("skilmLevel");
 			if (item != null) {
 				this.setSkilmeLevel(Integer.parseInt(item.getNodeValue()));
 			}

@@ -9,16 +9,13 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-
 public class WriteXML {
 
 	public void execute(final ArrayList<Tsun> tsunList, final String xmlPath) throws Exception {
 
-		final Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+		final org.w3c.dom.Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
 
-		final Element tsunsElement = document.createElement("Tsuns");
+		final org.w3c.dom.Element tsunsElement = document.createElement("Tsuns");
 		document.appendChild(tsunsElement);
 
 		for (final Tsun tsun : tsunList) {

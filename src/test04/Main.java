@@ -1,18 +1,13 @@
 package test04;
 
+import java.util.ArrayList;
+
 public class Main {
 
 	public static void main(String[] args) {
-
 		java.lang.System.out.println("START !");
 
-		a01();
-
-	}
-
-	private static void a01() {
 		final String xmlParh = "c:\\benJave\\myTsuns.xml";
-
 		try {
 			new WriteXML().execute(createTsunList(), xmlParh);
 			new WriteXML().execute(new ReadXML().execute(xmlParh), xmlParh);
@@ -20,8 +15,8 @@ public class Main {
 		}
 	}
 
-	private static java.util.ArrayList<Tsun> createTsunList() {
-		final java.util.ArrayList<Tsun> tsunList = new java.util.ArrayList<Tsun>();
+	private static ArrayList<Tsun> createTsunList() {
+		final ArrayList<Tsun> tsunList = new ArrayList<Tsun>();
 		tsunList.add(new Beasu());
 		tsunList.add(new Mickez());
 		tsunList.add(new Mickez());

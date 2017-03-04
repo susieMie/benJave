@@ -6,23 +6,20 @@ import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-
 public class ReadXML {
 
 	public ArrayList<Tsun> execute(String path) throws Exception {
 		final DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 
-		final Document document = documentBuilder.parse(new File(path));
+		final org.w3c.dom.Document document = documentBuilder.parse(new File(path));
 
-		final java.util.ArrayList<Tsun> tsunList = new java.util.ArrayList<Tsun>();
+		final ArrayList<Tsun> tsunList = new ArrayList<Tsun>();
 
 		// 要素情報の取得
 		if (document.hasChildNodes()) {
-			final Node tsunsNode = document.getFirstChild();
+			final org.w3c.dom.Node tsunsNode = document.getFirstChild();
 			if (tsunsNode.hasChildNodes()) {
-				Node tsunNode = tsunsNode.getFirstChild();
+				org.w3c.dom.Node tsunNode = tsunsNode.getFirstChild();
 				while (tsunNode != null) {
 
 					if (tsunNode.getNodeName().equals("Beasu")) {
