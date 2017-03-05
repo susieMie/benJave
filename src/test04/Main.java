@@ -7,20 +7,28 @@ public class Main {
 	public static void main(String[] args) {
 		java.lang.System.out.println("START !");
 
-		final String xmlParh = "c:\\benJave\\myTsuns.xml";
 		try {
-			new WriteXML().execute(createTsunList(), xmlParh);
-			new WriteXML().execute(new ReadXML().execute(xmlParh), xmlParh);
+			final String bb = "c:\\benJave\\myTsuns.xml";
+			new WriteXML().execute(createPlayerList(), bb);
+			final ArrayList<Player> a = new ReadXML().execute(bb);
+			new WriteXML().execute(a, bb);
+
 		} catch (Exception e) {
 		}
 	}
 
-	private static ArrayList<Tsun> createTsunList() {
-		final ArrayList<Tsun> tsunList = new ArrayList<Tsun>();
-		tsunList.add(new Beasu());
-		tsunList.add(new Mickez());
-		tsunList.add(new Mickez());
-		return tsunList;
+	private static ArrayList<Player> createPlayerList() {
+		ArrayList<Player> list = new ArrayList<Player>();
+		Player a = new Player();
+		a.addTsun(new Beasu());
+		a.addTsun(new Mickez());
+		list.add(a);
+		Player b = new Player();
+		b.addTsun(new Beasu());
+		b.addTsun(new Mickez());
+		b.addTsun(new Mickez());
+		list.add(b);
+		return list;
 	}
 
 }

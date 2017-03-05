@@ -11,14 +11,16 @@ import javax.xml.transform.stream.StreamResult;
 
 public class WriteXML {
 
-	public void execute(final ArrayList<Tsun> tsunList, final String xmlPath) throws Exception {
+
+
+	public void execute(final ArrayList<Player> tsunList, final String xmlPath) throws Exception {
 
 		final org.w3c.dom.Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
 
-		final org.w3c.dom.Element tsunsElement = document.createElement("Tsuns");
+		final org.w3c.dom.Element tsunsElement = document.createElement("Players");
 		document.appendChild(tsunsElement);
 
-		for (final Tsun tsun : tsunList) {
+		for (final Player tsun : tsunList) {
 			tsunsElement.appendChild(tsun.createElement(document));
 		}
 

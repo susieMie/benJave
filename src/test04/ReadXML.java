@@ -8,37 +8,29 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 public class ReadXML {
 
-	public ArrayList<Tsun> execute(String path) throws Exception {
+	public ArrayList<Player> execute(final String path) throws Exception {
 		final DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 
 		final org.w3c.dom.Document document = documentBuilder.parse(new File(path));
 
-		final ArrayList<Tsun> tsunList = new ArrayList<Tsun>();
+		final ArrayList<Player> playerList = new ArrayList<Player>();
 
 		// 要素情報の取得
 		if (document.hasChildNodes()) {
-			final org.w3c.dom.Node tsunsNode = document.getFirstChild();
-			if (tsunsNode.hasChildNodes()) {
-				org.w3c.dom.Node tsunNode = tsunsNode.getFirstChild();
-				while (tsunNode != null) {
-
-					if (tsunNode.getNodeName().equals("Beasu")) {
-						final Tsun beasu = new Beasu();
-						beasu.loadNode(tsunNode);
-						tsunList.add(beasu);
-
-					} else if (tsunNode.getNodeName().equals("Mickez")) {
-						final Tsun mickez = new Mickez();
-						mickez.loadNode(tsunNode);
-						tsunList.add(mickez);
-
+			final org.w3c.dom.Node playersNode = document.getFirstChild();
+			if (playersNode.hasChildNodes()) {
+				org.w3c.dom.Node playerNode = playersNode.getFirstChild();
+				while (playerNode != null) {
+					if (playerNode.getNodeName().equals("Player")) {
+						final Player player = new Player();
+						player.loadNode(playerNode);
+						playerList.add(player);
 					}
 
-					tsunNode = tsunNode.getNextSibling();
+					playerNode = playerNode.getNextSibling();
 				}
 			}
 		}
-		return tsunList;
+		return playerList;
 	}
-
 }
